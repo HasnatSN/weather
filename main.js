@@ -16,7 +16,17 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_weatherdata_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/weatherdata.js */ \"./src/modules/weatherdata.js\");\n\r\n\r\n\n\n//# sourceURL=webpack://weather/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_weatherdata_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/weatherdata.js */ \"./src/modules/weatherdata.js\");\n/* harmony import */ var _modules_user_input_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/user_input.js */ \"./src/modules/user_input.js\");\n\r\n\r\n\r\nconst anewCityForm = document.querySelector(\"[data-new-city-form]\");\r\n\r\nanewCityForm.addEventListener(\"click\", () => {\r\n    console.log(_modules_weatherdata_js__WEBPACK_IMPORTED_MODULE_0__.weatherDataList);\r\n})\n\n//# sourceURL=webpack://weather/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/user_input.js":
+/*!***********************************!*\
+  !*** ./src/modules/user_input.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cities\": () => (/* binding */ cities),\n/* harmony export */   \"newCityForm\": () => (/* binding */ newCityForm),\n/* harmony export */   \"newCityInput\": () => (/* binding */ newCityInput)\n/* harmony export */ });\nconst newCityForm = document.querySelector(\"[data-new-city-form]\");\r\nconst newCityInput = document.querySelector(\"[data-new-city-input]\");\r\nconst cities = [];\r\n\r\nnewCityForm.addEventListener(\"submit\", e => {\r\n    e.preventDefault();\r\n    const cityName = newCityInput.value;\r\n    if (cityName == null || cityName == \"\") return alert(\"Input invalid.\")\r\n    newCityInput.value = \"\";\r\n    cities.push(cityName);\r\n    console.log(cities);\r\n})\r\n\r\n\r\n\n\n//# sourceURL=webpack://weather/./src/modules/user_input.js?");
 
 /***/ }),
 
@@ -26,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getWeatherData\": () => (/* binding */ getWeatherData)\n/* harmony export */ });\nlet getWeatherData = new Promise((resolve, reject) => {\r\n  resolve(\r\n    fetch(\r\n      \"https://api.openweathermap.org/data/2.5/weather?q=\" + city + \"&units=metric&appid=ef6e090d0fed450ba07f747031ada8e4\"\r\n    ).then((response) => {\r\n      if (response.ok) {\r\n        return response.json();\r\n      }\r\n      throw new Error(\"Something went wrong. -HSN\");\r\n    })\r\n  );\r\n});\r\n\r\ngetWeatherData\r\n  .then((data) => {\r\n    console.log(data);\r\n  });\r\n\r\n\r\n\n\n//# sourceURL=webpack://weather/./src/modules/weatherdata.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"weatherDataList\": () => (/* binding */ weatherDataList)\n/* harmony export */ });\nlet weatherDataList = [];\r\n\r\nlet getWeatherData = new Promise((resolve) => {\r\n  resolve(\r\n    fetch(\r\n      \"https://api.openweathermap.org/data/2.5/weather?q=Melk&units=metric&appid=ef6e090d0fed450ba07f747031ada8e4\"\r\n    ).then((response) => {\r\n      if (response.ok) {\r\n        return response.json();\r\n      }\r\n      throw new Error(\"Something went wrong. -HSN\");\r\n    })\r\n  );\r\n});\r\n\r\ngetWeatherData.then((data) => {\r\n  weatherDataList.push(data);\r\n});\r\n\r\n\r\n\n\n//# sourceURL=webpack://weather/./src/modules/weatherdata.js?");
 
 /***/ })
 

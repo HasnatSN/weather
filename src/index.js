@@ -1,8 +1,9 @@
-import { weatherData, weatherDataList } from "./modules/weatherdata.js";
-import { newCityForm, newCityInput, cities } from "./modules/user_input.js";
+import { weatherDataList } from "./modules/weatherdata.js";
+import { newCityForm } from "./modules/user_input.js";
+import { renderCards } from "./modules/ui.js";
 
-const anewCityForm = document.querySelector("[data-new-city-form]");
+const anewCityInput = document.querySelector("[data-new-city-input]");
 
-anewCityForm.addEventListener("click", () => {
-    console.log(weatherDataList);
+anewCityInput.addEventListener("click", () => {
+    console.log(weatherDataList, "index.js");
 })

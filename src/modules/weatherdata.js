@@ -1,3 +1,5 @@
+import {createCustomObjects} from './cards';
+
 let weatherDataList = [];
 
 // let getWeatherData = new Promise((resolve) => {
@@ -51,6 +53,7 @@ async function getWeatherData(city) {
   }
 
   weatherDataList.push(result);
+  createCustomObjects();
 }
 
 export { getWeatherData, weatherDataList };

@@ -11,7 +11,6 @@ newCityForm.addEventListener("submit", e => {
     if (cityName == null || cityName == "") return alert("Input invalid.")
     newCityInput.value = "";
     getWeatherData(cityName);
-    createCustomObjects();
 })
 
 

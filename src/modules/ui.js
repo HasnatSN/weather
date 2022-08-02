@@ -41,7 +41,7 @@ function removeCardFromDom(index) {
 function getFittingImage(desc) {
   switch (desc) {
     case "clear sky":
-      return "/weather/src/pictures/001-sun.png";
+      return "/weather/blob/main/src/pictures/001-sun.png";
 
     case "few clouds":
       return "/weather/src/pictures/002-cloudy.png";

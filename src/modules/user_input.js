@@ -10,17 +10,8 @@ function eventHandler() {
   if (cityName == null || cityName == "") return alert("Input invalid.");
   newCityInput.value = "";
   getWeatherData(cityName);
-  searchBtn.removeEventListener("submit", eventHandler);
 }
 
-searchBtn.addEventListener("click", eventHandler);
+searchBtn.onclick = function() {(eventHandler())};
 
 export { searchBtn, newCityInput };
-
-// e => {
-//     e.preventDefault();
-//     const cityName = newCityInput.value;
-//     if (cityName == null || cityName == "") return alert("Input invalid.")
-//     newCityInput.value = "";
-//     getWeatherData(cityName);
-// }

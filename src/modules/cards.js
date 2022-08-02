@@ -7,7 +7,7 @@ function createCardObjects(cityObject) {
   return {
     cityName: cityObject.name,
     weather: cityObject.weather[0].main,
-    temp: cityObject.main.temp,
+    temp: Math.floor(cityObject.main.temp),
     description: cityObject.weather[0].description,
     country: cityObject.sys.country,
     feelsLike: cityObject.main.feels_like,
@@ -16,6 +16,7 @@ function createCardObjects(cityObject) {
 }
 
 function createCustomObjects() {
+  cardObjects = [];
   for (let cityObject of weatherDataList) {
     let cardObject = createCardObjects(cityObject);
     cardObjects.push(cardObject);

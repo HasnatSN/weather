@@ -19,15 +19,20 @@ function removeCardFromDom(index) {
   const cardList = document.querySelectorAll(".weather-card");
 
   for (let card of cardList) {
-    if (card.dataset.index == index) card.parentNode.removeChild(card);
+    if (card.dataset.index == index) {
+      card.parentNode.removeChild(card);
 
-    for (let object of weatherDataList) {
-      if (card.childNodes[0].childNodes[0].innerText == object.name) {
-        let indexOfObjectToBeRomoved = weatherDataList.indexOf(object);
-        weatherDataList.splice(indexOfObjectToBeRomoved, 1);
+      for (let cardObject of cardObjects) {
+        if (card.childNodes[0].childNodes[0].innerText == cardObject.cityName) {
+          let indexOfObjectToBeRomoved = cardObjects.indexOf(cardObject);
+          cardObjects.splice(indexOfObjectToBeRomoved, 1);
+          weatherDataList.splice(indexOfObjectToBeRomoved, 1);
+        }
       }
     }
   }
+
+  renderCards();
 }
 
 function createCard(cardObject, cardAreaDiv) {

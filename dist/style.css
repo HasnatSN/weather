@@ -195,7 +195,7 @@ img {
 
   .card-area {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 300px;
   }
 }

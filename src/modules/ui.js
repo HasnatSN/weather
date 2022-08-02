@@ -1,8 +1,10 @@
 import { cardObjects } from "./cards.js";
 
 function renderCards() {
+  const cardAreaDiv = document.querySelector("[data-card-area]");
+  cardAreaDiv.innerHTML = "";
   for (let cardObject of cardObjects) {
-    createCard(cardObject);
+    createCard(cardObject, cardAreaDiv);
   }
 }
 
@@ -12,8 +14,13 @@ function appendChildrenToParent(parent, ...args) {
   }
 }
 
-function createCard(cardObject) {
-  const cardAreaDiv = document.querySelector("[data-card-area]");
+function createCard(cardObject, cardAreaDiv) {
+  // createElements();
+  // addClassesToElements();
+  // addSourcesToImages();
+  // appendAllChildrenToParents(cardAreaDiv);
+  // addTextContent(cardObject);
+
   const weatherCardDiv = document.createElement("div");
   const cardTitleDiv = document.createElement("div");
   const cityNameDiv = document.createElement("div");
@@ -39,8 +46,7 @@ function createCard(cardObject) {
   cardTitleDiv.classList.add("card-title");
   cityNameDiv.classList.add("city-name");
   deleteImgDiv.classList.add("delete-image-div");
-  deleteImg.src = "/weather/src/pictures/delete-button.png";
-  weatherImg.src = "/weather/src/pictures/002-cloudy.png";
+
   temperatureDiv.classList.add("temperature");
   descriptionDiv.classList.add("description");
   locationDiv.classList.add("location");
@@ -53,8 +59,11 @@ function createCard(cardObject) {
   humidityIcon.classList.add("fa-solid");
   humidityIcon.classList.add("fa-droplet");
 
-  cardAreaDiv.appendChild(weatherCardDiv);
+  deleteImg.src = "/weather/src/pictures/delete-button.png";
+  weatherImg.src = "/weather/src/pictures/002-cloudy.png";
 
+  cardAreaDiv.appendChild(weatherCardDiv);
+  deleteImgDiv.appendChild(deleteImg);
   appendChildrenToParent(
     weatherCardDiv,
     cardTitleDiv,
@@ -64,20 +73,18 @@ function createCard(cardObject) {
     locationDiv,
     cardLastRowDiv
   );
-
-  cardTitleDiv.appendChild(cityNameDiv, deleteImgDiv);
-  deleteImgDiv.appendChild(deleteImg);
-  cardLastRowDiv.appendChild(tempFeelDiv, humidityDiv);
-  tempFeelDiv.appendChild(tempFeelIcon, feelsLikeDiv);
-  feelsLikeDiv.appendChild(feelsLikeNumberDiv, feelsLikeTextDiv);
-  humidityDiv.appendChild(humidityIcon, humidityDescDiv);
-  humidityDescDiv.appendChild(humidityNumberDiv, humidityTextDiv);
+  appendChildrenToParent(cardTitleDiv, cityNameDiv, deleteImgDiv);
+  appendChildrenToParent(cardLastRowDiv, tempFeelDiv, humidityDiv);
+  appendChildrenToParent(tempFeelDiv, tempFeelIcon, feelsLikeDiv);
+  appendChildrenToParent(feelsLikeDiv, feelsLikeNumberDiv, feelsLikeTextDiv);
+  appendChildrenToParent(humidityDiv, humidityIcon, humidityDescDiv);
+  appendChildrenToParent(humidityDescDiv, humidityNumberDiv, humidityTextDiv);
 
   cityNameDiv.innerText = cardObject.cityName;
-  temperatureDiv.innerText = cardObject.temp;
+  temperatureDiv.innerText = cardObject.temp + "° C";
   descriptionDiv.innerText = cardObject.description;
   locationDiv.innerText = cardObject.cityName + ", " + cardObject.country;
-  feelsLikeNumberDiv.innerText = cardObject.feelsLike;
+  feelsLikeNumberDiv.innerText = cardObject.feelsLike + "° C";
   feelsLikeTextDiv.innerText = "Feels like";
   humidityNumberDiv.innerText = cardObject.humidity + "%";
   humidityTextDiv.innerText = "Humidity";

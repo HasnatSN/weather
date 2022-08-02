@@ -1,4 +1,4 @@
-import {createCustomObjects} from './cards';
+import { createCustomObjects } from "./cards";
 
 let weatherDataList = [];
 
@@ -36,6 +36,16 @@ let weatherDataList = [];
 //   });
 // };
 
+function checkObjectUnique(object) {
+  if (weatherDataList.length <= 0) return false;
+
+  for (let i = 0; i < weatherDataList.length; i++) {
+    if (weatherDataList[i].name == object.name) return true;
+  }
+
+  return false;
+}
+
 async function getWeatherData(city) {
   let promise = fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -47,10 +57,10 @@ async function getWeatherData(city) {
 
   let result = await promise;
 
-  if (result === null || result == "" || result === undefined) {
-    alert("City not found.");
-    return;
-  }
+  if (result === null || result == "" || result === undefined)
+    return alert("City not found.");
+
+  if (checkObjectUnique(result)) return;
 
   weatherDataList.push(result);
   createCustomObjects();

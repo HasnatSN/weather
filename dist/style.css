@@ -31,23 +31,23 @@ main {
   padding-top: 1rem;
 }
 
-form {
+.form-div {
   display: flex;
   gap: 1rem;
 }
 
-form input {
+.form-div input {
   border: 1px solid lightskyblue;
   border-radius: 4px;
   padding: 0.3rem;
 }
 
-form input:focus {
+.form-div input:focus {
   border: 2px solid lightskyblue;
   outline: none;
 }
 
-form button {
+.form-div button {
   border-radius: 4px;
   border: 1px solid white;
   padding: 0.3rem;
@@ -55,7 +55,7 @@ form button {
   color: white;
 }
 
-form button:hover {
+.form-div button:hover {
   cursor: pointer;
   /* background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0); */
   background-color: white;

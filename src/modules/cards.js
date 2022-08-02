@@ -1,7 +1,8 @@
 import { weatherDataList } from "./weatherdata.js";
 import { renderCards } from "./ui.js";
+import { retrieveCardData } from "./memory.js";
 
-let cardObjects = [];
+let cardObjects = retrieveCardData();
 
 function createCardObjects(cityObject) {
   return {

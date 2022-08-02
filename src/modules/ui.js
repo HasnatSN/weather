@@ -1,5 +1,6 @@
 import { cardObjects } from "./cards.js";
 import { weatherDataList } from "./weatherdata.js";
+import { writeData} from "./memory.js"
 
 function renderCards() {
   const cardAreaDiv = document.querySelector("[data-card-area]");
@@ -7,6 +8,8 @@ function renderCards() {
   for (let cardObject of cardObjects) {
     createCard(cardObject, cardAreaDiv);
   }
+
+  writeData();
 }
 
 function appendChildrenToParent(parent, ...args) {
@@ -31,12 +34,11 @@ function removeCardFromDom(index) {
       }
     }
   }
-
+  writeData();
   renderCards();
 }
 
 function getFittingImage(desc) {
-  console.log(desc);
   switch (desc) {
     case "clear sky":
       return "/weather/src/pictures/001-sun.png";
@@ -45,7 +47,7 @@ function getFittingImage(desc) {
       return "/weather/src/pictures/002-cloudy.png";
 
     case "scattered clouds":
-      return "/weather/src/pictures/003-cloudy.png";
+      return "/weather/src/pictures/003-cloud.png";
 
     case "broken clouds":
       return "/weather/src/pictures/009-broken.png";
@@ -71,11 +73,6 @@ function getFittingImage(desc) {
 }
 
 function createCard(cardObject, cardAreaDiv) {
-  // createElements();
-  // addClassesToElements();
-  // addSourcesToImages();
-  // appendAllChildrenToParents(cardAreaDiv);
-  // addTextContent(cardObject);
 
   const weatherCardDiv = document.createElement("div");
   const cardTitleDiv = document.createElement("div");

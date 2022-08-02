@@ -12,6 +12,8 @@ function eventHandler() {
   getWeatherData(cityName);
 }
 
-searchBtn.onclick = function() {(eventHandler())};
+searchBtn.onclick = function () {
+  eventHandler();
+};
 
 export { searchBtn, newCityInput };

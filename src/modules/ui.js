@@ -35,6 +35,41 @@ function removeCardFromDom(index) {
   renderCards();
 }
 
+function getFittingImage(desc) {
+  console.log(desc);
+  switch (desc) {
+    case "clear sky":
+      return "/weather/src/pictures/001-sun.png";
+
+    case "few clouds":
+      return "/weather/src/pictures/002-cloudy.png";
+
+    case "scattered clouds":
+      return "/weather/src/pictures/003-cloudy.png";
+
+    case "broken clouds":
+      return "/weather/src/pictures/009-broken.png";
+
+    case "shower rain":
+      return "/weather/src/pictures/004-rainy.png";
+
+    case "rain":
+      return "/weather/src/pictures/005-rainy-1.png";
+
+    case "thunderstorm":
+      return "/weather/src/pictures/006-storm.png";
+
+    case "snow":
+      return "/weather/src/pictures/007-snowflake.png";
+
+    case "mist":
+      return "/weather/src/pictures/008-windy.png";
+
+    default:
+      return "/weather/src/pictures/warm.png";
+  }
+}
+
 function createCard(cardObject, cardAreaDiv) {
   // createElements();
   // addClassesToElements();
@@ -81,7 +116,7 @@ function createCard(cardObject, cardAreaDiv) {
   humidityIcon.classList.add("fa-droplet");
 
   deleteImg.src = "/weather/src/pictures/delete-button.png";
-  weatherImg.src = "/weather/src/pictures/002-cloudy.png";
+  weatherImg.src = getFittingImage(cardObject.description);
 
   let randomIndex = Math.floor(Math.random() * 1000000);
   weatherCardDiv.setAttribute("data-index", randomIndex);

@@ -1,6 +1,6 @@
 import { cardObjects } from "./cards.js";
 import { weatherDataList } from "./weatherdata.js";
-import { writeData} from "./memory.js"
+import { writeData } from "./memory.js";
 
 function renderCards() {
   const cardAreaDiv = document.querySelector("[data-card-area]");
@@ -41,39 +41,38 @@ function removeCardFromDom(index) {
 function getFittingImage(desc) {
   switch (desc) {
     case "clear sky":
-      return "/weather/blob/main/src/pictures/001-sun.png";
+      return "https://github.com/HasnatSN/weather/blob/main/src/pictures/001-sun.png?raw=true";
 
     case "few clouds":
-      return "/weather/src/pictures/002-cloudy.png";
+      return "https://github.com/HasnatSN/weather/blob/main/src/pictures/002-cloudy.png?raw=true";
 
     case "scattered clouds":
-      return "/weather/src/pictures/003-cloud.png";
+      return "https://github.com/HasnatSN/weather/blob/main/src/pictures/003-cloud.png?raw=true";
 
     case "broken clouds":
-      return "/weather/src/pictures/009-broken.png";
+      return "https://github.com/HasnatSN/weather/blob/main/src/pictures/009-broken.png?raw=true";
 
     case "shower rain":
-      return "/weather/src/pictures/004-rainy.png";
+      return "https://github.com/HasnatSN/weather/blob/main/src/pictures/004-rainy.png?raw=true";
 
     case "rain":
-      return "/weather/src/pictures/005-rainy-1.png";
+      return "https://github.com/HasnatSN/weather/blob/main/src/pictures/005-rainy-1.png?raw=true";
 
     case "thunderstorm":
-      return "/weather/src/pictures/006-storm.png";
+      return "https://github.com/HasnatSN/weather/blob/main/src/pictures/006-storm.png?raw=true";
 
     case "snow":
-      return "/weather/src/pictures/007-snowflake.png";
+      return "https://github.com/HasnatSN/weather/blob/main/src/pictures/007-snowflake.png?raw=true";
 
     case "mist":
-      return "/weather/src/pictures/008-windy.png";
+      return "https://github.com/HasnatSN/weather/blob/main/src/pictures/008-windy.png?raw=true";
 
     default:
-      return "/weather/src/pictures/warm.png";
+      return "https://github.com/HasnatSN/weather/blob/main/src/pictures/warm.png?raw=true";
   }
 }
 
 function createCard(cardObject, cardAreaDiv) {
-
   const weatherCardDiv = document.createElement("div");
   const cardTitleDiv = document.createElement("div");
   const cityNameDiv = document.createElement("div");
@@ -112,7 +111,8 @@ function createCard(cardObject, cardAreaDiv) {
   humidityIcon.classList.add("fa-solid");
   humidityIcon.classList.add("fa-droplet");
 
-  deleteImg.src = "/weather/src/pictures/delete-button.png";
+  deleteImg.src =
+    "https://github.com/HasnatSN/weather/blob/main/src/pictures/delete-button.png?raw=true";
   weatherImg.src = getFittingImage(cardObject.description);
 
   let randomIndex = Math.floor(Math.random() * 1000000);

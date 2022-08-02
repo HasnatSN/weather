@@ -16,7 +16,6 @@ function createCardObjects(cityObject) {
 }
 
 function createCustomObjects() {
-  console.log(weatherDataList);
   for (let cityObject of weatherDataList) {
     let cardObject = createCardObjects(cityObject);
     cardObjects.push(cardObject);

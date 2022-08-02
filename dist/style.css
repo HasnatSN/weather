@@ -124,6 +124,7 @@ img {
   width: 90%;
   /* text-align: center; */
   border-bottom: 1px solid black;
+  max-height: 41px;
 }
 
 .card-title img {

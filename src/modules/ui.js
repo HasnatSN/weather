@@ -1,4 +1,5 @@
 import { cardObjects } from "./cards.js";
+import { weatherDataList } from "./weatherdata.js";
 
 function renderCards() {
   const cardAreaDiv = document.querySelector("[data-card-area]");
@@ -11,6 +12,21 @@ function renderCards() {
 function appendChildrenToParent(parent, ...args) {
   for (let child of args) {
     parent.appendChild(child);
+  }
+}
+
+function removeCardFromDom(index) {
+  const cardList = document.querySelectorAll(".weather-card");
+
+  for (let card of cardList) {
+    if (card.dataset.index == index) card.parentNode.removeChild(card);
+
+    for (let object of weatherDataList) {
+      if (card.childNodes[0].childNodes[0].innerText == object.name) {
+        let indexOfObjectToBeRomoved = weatherDataList.indexOf(object);
+        weatherDataList.splice(indexOfObjectToBeRomoved, 1);
+      }
+    }
   }
 }
 
@@ -61,6 +77,13 @@ function createCard(cardObject, cardAreaDiv) {
 
   deleteImg.src = "/weather/src/pictures/delete-button.png";
   weatherImg.src = "/weather/src/pictures/002-cloudy.png";
+
+  let randomIndex = Math.floor(Math.random() * 1000000);
+  weatherCardDiv.setAttribute("data-index", randomIndex);
+
+  deleteImg.addEventListener("click", (e) => {
+    removeCardFromDom(randomIndex);
+  });
 
   cardAreaDiv.appendChild(weatherCardDiv);
   deleteImgDiv.appendChild(deleteImg);
